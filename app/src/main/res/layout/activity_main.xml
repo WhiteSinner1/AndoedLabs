@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:padding="24dp" android:gravity="center_horizontal">
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Первые 6 лабораторных работ" android:textSize="22sp" android:textStyle="bold"
+        android:layout_marginBottom="20dp" />
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Смирнов Антон Владимирович\nГруппа: 411-ИС-23" android:textSize="16sp" android:gravity="center"
+        android:layout_marginBottom="24dp" />
+    <Button android:id="@+id/buttonLab1" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Лабораторная 1 - Hello World" />
+    <Button android:id="@+id/buttonLab2" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Лабораторная 2 - Элементы" />
+    <Button android:id="@+id/buttonLab3" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Лабораторная 3 - Экраны" />
+    <Button android:id="@+id/buttonLab4" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Лабораторная 4 - Стили и темы" />
+    <Button android:id="@+id/buttonLab5" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Лабораторная 5 - Список" />
+    <Button android:id="@+id/buttonLab6" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Лабораторная 6 - Анимация" />
+</LinearLayout>

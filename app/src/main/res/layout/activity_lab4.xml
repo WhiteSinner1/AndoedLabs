@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:padding="24dp" android:gravity="center_horizontal">
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Лабораторная работа №4" style="@style/LabTextStyle.bigfont" />
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Проверка стилей и темы" style="@style/LabTextStyle" android:layout_marginTop="20dp" />
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Этот текст использует общий стиль" style="@style/LabTextStyle" android:layout_marginTop="20dp" />
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Смирнов Антон Владимирович\nГруппа: 411-ИС-23" style="@style/LabTextStyle" android:gravity="center" android:layout_marginTop="28dp" />
+</LinearLayout>

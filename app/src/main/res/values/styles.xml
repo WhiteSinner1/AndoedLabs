@@ -1,0 +1,22 @@
+<resources>
+    <style name="Theme.Labs123Java" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:colorAccent">#7B1FA2</item>
+        <item name="android:navigationBarColor">#000000</item>
+    </style>
+    <style name="Theme.Lab4" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:windowBackground">#FFF3E0</item>
+        <item name="android:textColor">#3E2723</item>
+        <item name="android:colorAccent">#E65100</item>
+    </style>
+    <style name="LabTextStyle" parent="@android:style/TextAppearance">
+        <item name="android:textColor">#3E2723</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:typeface">monospace</item>
+    </style>
+    <style name="LabTextStyle.bigfont">
+        <item name="android:textSize">36sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>
