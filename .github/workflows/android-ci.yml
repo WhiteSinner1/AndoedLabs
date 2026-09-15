@@ -1,0 +1,70 @@
+name: Android CI/CD
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    name: Build APK and publish release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK platform
+        shell: bash
+        run: |
+          yes | sdkmanager --licenses >/dev/null || true
+          sdkmanager "platforms;android-37"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Build debug APK
+        run: ./gradlew --no-daemon clean assembleDebug
+
+      - name: Prepare APK
+        shell: bash
+        run: |
+          mkdir -p release
+          cp app/build/outputs/apk/debug/app-debug.apk release/AndoedLabs-debug.apk
+          sha256sum release/AndoedLabs-debug.apk > release/AndoedLabs-debug.apk.sha256
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: AndoedLabs-debug
+          path: release/*
+          if-no-files-found: error
+
+      - name: Publish latest GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: Latest Android build
+          body: |
+            Автоматическая сборка из ветки master.
+
+            В релизе находится APK со всеми шестью лабораторными работами.
+          files: |
+            release/AndoedLabs-debug.apk
+            release/AndoedLabs-debug.apk.sha256
+          make_latest: true
+          prerelease: false
+          fail_on_unmatched_files: true
