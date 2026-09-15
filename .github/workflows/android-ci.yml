@@ -23,36 +23,10 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
+          cache: gradle
 
-      - name: Install Android SDK platform
-        shell: bash
-        run: |
-          SDK_ROOT="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-/usr/local/lib/android/sdk}}"
-          SDKMANAGER=""
-          for candidate in \
-            "$SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" \
-            "$SDK_ROOT/cmdline-tools/bin/sdkmanager" \
-            /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager \
-            /usr/local/lib/android/sdk/cmdline-tools/bin/sdkmanager; do
-            if [ -f "$candidate" ]; then
-              SDKMANAGER="$candidate"
-              break
-            fi
-          done
-          if [ -z "$SDKMANAGER" ]; then
-            SDKMANAGER="$(find /usr/local/lib/android /opt -type f -name sdkmanager -print -quit 2>/dev/null || true)"
-          fi
-          if [ -z "$SDKMANAGER" ]; then
-            echo "sdkmanager was not found"
-            echo "ANDROID_HOME=${ANDROID_HOME:-unset}"
-            echo "ANDROID_SDK_ROOT=${ANDROID_SDK_ROOT:-unset}"
-            find /usr/local/lib/android /opt -maxdepth 6 -type f -name sdkmanager -print 2>/dev/null || true
-            exit 1
-          fi
-          chmod +x "$SDKMANAGER"
-          echo "Using sdkmanager: $SDKMANAGER"
-          yes | "$SDKMANAGER" --licenses >/dev/null || true
-          "$SDKMANAGER" "platforms;android-37"
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
